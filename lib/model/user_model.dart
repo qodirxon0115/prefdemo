@@ -1,3 +1,6 @@
+
+
+
 class User{
   late String id;
   late String email;
@@ -10,6 +13,7 @@ class User{
       : id = json["id"],
         email = json["email"],
         password = json["password"];
+
 
   Map<String, dynamic> toJson() => {
     "id": id,

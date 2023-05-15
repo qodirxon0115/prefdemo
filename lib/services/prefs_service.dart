@@ -23,7 +23,7 @@ class Prefs{
   static storeUser(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String stringUser = jsonEncode(user);
-    prefs.setString("user", stringUser);
+    await prefs.setString("user", stringUser);
   }
 
   static Future<User?> loadUser() async {
