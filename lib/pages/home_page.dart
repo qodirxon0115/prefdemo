@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:prefdemo/pages/signup_page.dart';
 
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void _doLogin(){
+  void _doSign(){
     String email = emailController.text.toString().trim();
     String password = passwordController.text.toString().trim();
     User user = User.from(email: email, password: password);
@@ -25,7 +27,8 @@ class _HomePageState extends State<HomePage> {
     Prefs.storeUser(user);
 
     Prefs.loadUser().then((value) => {
-      print(user.password)
+      print(user.email),
+      print(user.password),
     });
   }
 
@@ -132,13 +135,13 @@ class _HomePageState extends State<HomePage> {
               child: Center(
                 child:
                 GestureDetector(
-                  onTap: _doLogin,
+                  onTap: _doSign,
                   child: const Text("Sign up", style: TextStyle(color: Colors.white,
                       fontSize: 16, fontWeight: FontWeight.bold),),
                 ),),
             ),
 
-            const SizedBox(height: 40,),
+            const SizedBox(height:25,),
 
             Center(
               child: Text("Or connect using", style: TextStyle(color: Colors.grey[400]),),
@@ -184,7 +187,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 20,),
+            const SizedBox(height: 15,),
 
             Container(
               margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
